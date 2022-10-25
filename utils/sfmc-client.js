@@ -8,9 +8,9 @@ const options = {
       authVersion: 2,
       accountId: process.env.SFMC_ACCOUNT_ID,
     },
-    authUrl: 'https://${process.env.SFMC_SUBDOMAIN}.auth.marketingcloudapis.com/v2/token',
+    authUrl: `https://${process.env.SFMC_SUBDOMAIN}.auth.marketingcloudapis.com/v2/token`,
   },
-  origin: 'https://${process.env.SFMC_SUBDOMAIN}.rest.marketingcloudapis.com/',
+  origin: `https://${process.env.SFMC_SUBDOMAIN}.rest.marketingcloudapis.com/`,
   globalReqOptions: {
   },
 };
@@ -24,7 +24,7 @@ const client = new FuelRest(options);
  * @returns {?Promise}
  */
 const saveData = async (externalKey, data) => client.post({
-  uri: 'https://${process.env.SFMC_SUBDOMAIN}/hub/v1/dataevents/key:${process.env.DATA_EXTENSION_EXTERNAL_KEY}/rowset',
+  uri: `/hub/v1/dataevents/key:${externalKey}/rowset`,
   headers: {
     'Content-Type': 'application/json',
   },
